@@ -13,6 +13,7 @@ body{
 .side_bar{
     height: 100vh;
     width: 20%;
+    display: flex;
  /* background-color: blueviolet; */
 }
 
@@ -32,11 +33,21 @@ body{
     margin-right: 10px;
 }
 
+.border_right{
+    height: 100vh;
+    border-right: 1px solid rgb(85, 74, 74);
+}
+
 .img{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap: 5px;
 
+}
+.img p{
+    font-size: 15px;
 }
 .img img{
     /* object-fit: contain; */
@@ -101,3 +112,50 @@ body{
 .content {
     font-size: 1vw;
 }
+
+.brand_img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand_img img{
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+
+}
+.brand_img .text{
+    display: flex;
+    flex-direction: column;
+}
+
+.brand{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.post{
+    /* background-color: yellow; */
+}
+
+.post_content{
+    margin-top: 1.5rem;
+}
+
+.post_img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.post_img img{
+    /* object-fit: contain; */
+    width: 75%;
+    height: 65vh;
+    border-radius: 1%;
+}
+
