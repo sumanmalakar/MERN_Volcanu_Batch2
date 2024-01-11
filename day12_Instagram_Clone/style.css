@@ -9,11 +9,15 @@ body{
     height: 100vh;
     /* overflow-y: hidden; */
 }
-
+.post_fixed{
+    /* position: fixed; */
+}
 .side_bar{
     height: 100vh;
     width: 20%;
     display: flex;
+    /* position: fixed; */
+    /* top: 0px; */
  /* background-color: blueviolet; */
 }
 
