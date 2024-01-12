@@ -13,6 +13,19 @@
         background-color: black;
         color: white;
       }
+       .nav-parent {
+        position: sticky;
+        top: 0px;
+        z-index: 2;
+
+      }
+      .nav-bar {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: blueviolet;
+        padding: 20px;
+      }
       .main_img {
         display: flex;
         justify-content: center;
@@ -27,6 +40,7 @@
         height: 300px;
         width: 300px;
         border-radius: 5%;
+        /* z-index: -1; */
         
       }
       .inside_img {
@@ -74,18 +88,7 @@
       .section3 {
         height: 100vh;
       }
-      .nav-parent {
-        position: sticky;
-        top: 0px;
-      }
-      .nav-bar {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        background-color: blueviolet;
-        padding: 20px;
-        z-index: 1;
-      }
+     
       a{
         text-decoration: none;
         color: white;
