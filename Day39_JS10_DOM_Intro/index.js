@@ -64,3 +64,10 @@ const imgChange = () => {
 const imgOriginal = () => {
   document.querySelector("img").src = temp;
 };
+
+const ele = document.querySelectorAll("h1");
+
+for (let i = 0; i < ele.length; i++) {
+  ele[i].style.backgroundColor = "blue";
+}
+
