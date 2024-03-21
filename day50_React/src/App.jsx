@@ -1,5 +1,6 @@
 import Phone from "./components/Phone";
 import { useState } from "react";
+import Products from "./components/Products";
 const App = () => {
   // const laptop = {
   //   name: "hp probook 430 g2",
@@ -43,7 +44,7 @@ const App = () => {
 
   return (
     <>
-    <button onClick={()=>setCounter(counter+1)}>Incrase</button>
+    {/* <button onClick={()=>setCounter(counter+1)}>Incrase</button>
     <button onClick={()=>setCounter(counter-1)}>Decrease</button>
       <Phone
         ram={"100gb"}
@@ -54,7 +55,9 @@ const App = () => {
         counter={counter}
         increase={increaseBy1}
         decrease={decreaseBy1}
-      />
+      /> */}
+
+      <Products />
     </>
   );
 };
