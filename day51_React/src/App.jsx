@@ -14,7 +14,7 @@ const App = () => {
 
   return (
     <>
-      <Navbar setproducts={setproducts} />
+      {/* <Navbar setproducts={setproducts} /> */}
       {/* <Products product={product} /> */}
 
       <FormHandling />
