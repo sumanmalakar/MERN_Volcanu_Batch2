@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 const Products = ({ product }) => {
   return (
     <>
       <div className="container">
         <div className="row">
           {product.map((p) => (
-            <div key={p.id} className="col-md-4 col-lg-4 my-3">
+            <Link to={`product/${p.id}`} key={p.id} className="col-md-4 col-lg-4 my-3" style={{textDecoration:"none"}}>
               <div
                 className="card bg-dark text-center"
                 style={{ width: "18rem" }}
@@ -29,7 +30,7 @@ const Products = ({ product }) => {
                   </a>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

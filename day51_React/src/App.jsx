@@ -3,6 +3,9 @@ import Products from "./Products";
 import Navbar from "./Navbar";
 import { items } from "./Data";
 import FormHandling from "./FormHandling";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Test from "./Test";
+import ProductDetails from "./ProductDetails";
 
 const App = () => {
   const [product, setproducts] = useState(items);
@@ -14,10 +17,18 @@ const App = () => {
 
   return (
     <>
-      {/* <Navbar setproducts={setproducts} /> */}
-      {/* <Products product={product} /> */}
+      <Router>
+        <Navbar setproducts={setproducts} />
+        <Routes>
+          <Route path="/" element={<Products product={product} />} />
+          {/* <Route path="/test" element={<Test />} /> */}
 
-      <FormHandling />
+          {/* dynamic Route */}
+          <Route path="/product/:id" element={<ProductDetails />} />
+        </Routes>
+      </Router>
+
+      {/* <FormHandling /> */}
     </>
   );
 };
