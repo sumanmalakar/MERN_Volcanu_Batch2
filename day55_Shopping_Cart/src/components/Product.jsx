@@ -1,13 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Product = ({ products }) => {
   return (
     <>
       <div className="row d-flex justify-content-center align-items-center">
         {products.map((data) => (
-          <div
+          <Link to={`/${data.id}`}
             key={data.id}
             className="col-md-4 d-flex justify-content-center align-items-center"
+            style={{textDecoration:'none'}}
           >
             <div
               className="card bg-dark text-light text-center my-3"
@@ -34,7 +36,7 @@ const Product = ({ products }) => {
                 </a>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </>

@@ -9,7 +9,7 @@ export const data = [
     price: "89999",
   },
   {
-    id: 5,
+    id: 5,  
     category: "laptops",
     title: "Xiaomi [Smartchoice] Notebookpro",
     imgSrc: "https://m.media-amazon.com/images/I/71TPda7cwUL._SL1500_.jpg",
