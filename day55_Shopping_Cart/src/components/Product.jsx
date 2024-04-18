@@ -1,21 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Product = ({ products }) => {
+const Product = ({ products, addToCart }) => {
   return (
     <>
       <div className="row d-flex justify-content-center align-items-center">
         {products.map((data) => (
-          <Link to={`/${data.id}`}
+          <div
             key={data.id}
             className="col-md-4 d-flex justify-content-center align-items-center"
-            style={{textDecoration:'none'}}
+            style={{ textDecoration: "none" }}
           >
             <div
               className="card bg-dark text-light text-center my-3"
               style={{ width: "18rem" }}
             >
-              <div className="d-flex justify-content-center align-items-center p-3">
+              <Link
+                to={`/${data.id}`}
+                className="d-flex justify-content-center align-items-center p-3"
+              >
                 <img
                   src={data.imgSrc}
                   className="card-img-top"
@@ -24,19 +27,19 @@ const Product = ({ products }) => {
                     width: "200px",
                   }}
                 />
-              </div>
+              </Link>
               <div className="card-body">
                 <h5 className="card-title">{data.title}</h5>
                 <p className="card-text">{data.description}</p>
-                <a href="#" className="btn btn-primary mx-3">
+                <button className="btn btn-primary mx-3">
                   {data.price}
-                </a>
-                <a href="#" className="btn btn-warning">
+                </button>
+                <button className="btn btn-warning" onClick={()=>addToCart(data)}>
                   Add To Cart
-                </a>
+                </button>
               </div>
             </div>
-          </Link>
+          </div>
         ))}
       </div>
     </>

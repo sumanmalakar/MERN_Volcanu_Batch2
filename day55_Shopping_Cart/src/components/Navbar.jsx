@@ -1,14 +1,28 @@
 import { FaCartPlus } from "react-icons/fa";
 import { data } from "../Data";
-import { Link, useLocation } from "react-router-dom";
-const Navbar = ({ setProducts }) => {
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+const Navbar = ({ setProducts, cart }) => {
   // console.log("this is my location = ",useLocation())
+  const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState("");
 
   const location = useLocation();
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (searchTerm != "") {
+      navigate(`/search/${searchTerm}`);
+    } else {
+      alert("Please Enter Something");
+    }
+    // navigate('/test')
+    setSearchTerm("");
+    console.log(searchTerm);
+  };
+
   const filterByCategory = (cat) =>
     setProducts(data.filter((d) => d.category === cat));
-
   const filterByPrice = (price) =>
     setProducts(data.filter((d) => d.price >= price));
 
@@ -28,12 +42,29 @@ const Navbar = ({ setProducts }) => {
               Volcanus.Cart
             </Link>
           </div>
-          <div className="search">
-            <input type="text" placeholder="search here..." />
-          </div>
-          <div className="cart">
-            <FaCartPlus style={{ fontSize: "2rem" }} />
-          </div>
+          <form className="search" onSubmit={submitHandler}>
+            <input
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              type="text"
+              placeholder="search here..."
+            />
+          </form>
+          <Link to={"/cart"} className="cart">
+            <button type="button" className="btn btn-primary position-relative">
+              <FaCartPlus
+                style={{
+                  fontSize: "2rem",
+                  textDecoration: "none",
+                  color: "white",
+                }}
+              />
+              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                {cart.length}
+                <span className="visually-hidden">unread messages</span>
+              </span>
+            </button>
+          </Link>
         </div>
         {location.pathname == "/" && (
           <div className="sub_bar d-flex justify-content-around align-items-center">

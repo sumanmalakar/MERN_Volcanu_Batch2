@@ -1,8 +1,19 @@
 import React from 'react'
 
-const Cart = () => {
+const Cart = ({cart}) => {
   return (
-    <div>Cart</div>
+    <div>
+      {cart.map((d)=><div key={d.id} >
+         <div className="container text-center my-5">
+          <div className="d-flex justify-content-center align-items-center">
+            <img src={d.imgSrc} alt="" style={{width:'250px',height:'250px',borderRadius:'10px'}} />
+          </div>
+          <h1>{d.title}</h1>
+          <button className='btn btn-primary mx-3'>{d.price}</button>
+          <button className='btn btn-warning'>Buy Now</button>
+         </div>
+      </div>)}
+    </div>
   )
 }
 
