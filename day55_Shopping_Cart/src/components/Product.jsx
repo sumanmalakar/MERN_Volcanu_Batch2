@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import ProductContext from "../context/ProductContext";
 
-const Product = ({ products, addToCart }) => {
+const Product = () => {
+  const { products, addToCart } = useContext(ProductContext)
   return (
     <>
       <div className="row d-flex justify-content-center align-items-center">

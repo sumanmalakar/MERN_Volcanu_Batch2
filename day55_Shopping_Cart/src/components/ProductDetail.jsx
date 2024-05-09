@@ -1,9 +1,11 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { data } from "../Data";
+import RelatedProduct from "./RelatedProduct";
 const ProductDetail = () => {
   const { id } = useParams();
   const product = data.filter((d) => d.id == id);
+  const cat = product[0].category;
   console.log(product[0]);
   return (
     <>
@@ -18,6 +20,9 @@ const ProductDetail = () => {
           <button className="btn btn-warning">Add To Cart</button>
         </div>
       </div>
+
+      <h1 className="text-center">Related Products</h1>
+      <RelatedProduct cat={cat} />
     </>
   );
 };

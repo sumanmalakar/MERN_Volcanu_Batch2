@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { data } from "../Data";
 import Product from "./Product";
-const SearchProduct = ({ setProducts }) => {
+
+import ProductContext from "../context/ProductContext";
+
+const SearchProduct = () => {
+  const { setProducts } = useContext(ProductContext)
   const { term } = useParams();
   const [searchData, setSearchData] = useState([]);
   useEffect(() => {

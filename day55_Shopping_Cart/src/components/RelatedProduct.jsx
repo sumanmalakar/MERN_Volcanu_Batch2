@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from "react";
+import ProductContext from "../context/ProductContext";
+import Product from "./Product";
+const RelatedProduct = ({ cat }) => {
+  const { relatedProduct } = useContext(ProductContext);
 
-const RelatedProduct = () => {
+  useEffect(() => {
+    relatedProduct(cat);
+  }, [cat]);
+
   return (
-    <div>RelatedProduct</div>
-  )
-}
+    <div>
+      <Product />
+    </div>
+  );
+};
 
-export default RelatedProduct
+export default RelatedProduct;
