@@ -24,7 +24,6 @@ export const addProduct = async (req, res) => {
   }
 };
 
-
 // get All Products
 export const getAllProducts = async (req, res) => {
   try {
@@ -35,7 +34,22 @@ export const getAllProducts = async (req, res) => {
   }
 };
 
+// get product by id
+export const getProductById = async (req, res) => {
+  const id = req.params.id;
+  let product = await Products.findById(id);
+  res.json({ message: "Product by Id", product });
+};
+
+// update product by id
+export const updateById = async (req, res) => {
+  const id = req.params.id;
+  let product = await Products.findByIdAndUpdate(id, req.body, { new: true });
+  if (!product) return res.json({ message: "Invalid Id" });
+  res.json({ message: "Your Product has been updated...!", product });
+};
+
 // home
-export const home = async (req,res) =>{
-  res.json({message:'This is home '})
-}
+export const home = async (req, res) => {
+  res.json({ message: "This is home " });
+};
