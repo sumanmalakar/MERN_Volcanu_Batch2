@@ -37,8 +37,16 @@ export const getAllProducts = async (req, res) => {
 // get product by id
 export const getProductById = async (req, res) => {
   const id = req.params.id;
-  let product = await Products.findById(id);
-  res.json({ message: "Product by Id", product });
+
+  try {
+    let product = await Products.findById(id);
+
+    if (!product) return res.json({ message: "Invalid Id" });
+
+    res.json({ message: "Product by Id", product });
+  } catch (error) {
+    res.json({ message: error.message, success: false });
+  }
 };
 
 // update product by id
@@ -49,18 +57,13 @@ export const updateById = async (req, res) => {
   res.json({ message: "Your Product has been updated...!", product });
 };
 
-
 // delete product by id
 export const deleteById = async (req, res) => {
   const id = req.params.id;
   let product = await Products.findByIdAndDelete(id);
   if (!product) return res.json({ message: "Invalid Id" });
-  res.json({ message: "Your Product has been Deleted...!"});
+  res.json({ message: "Your Product has been Deleted...!" });
 };
-
-
-
-
 
 // home
 export const home = async (req, res) => {

@@ -10,9 +10,9 @@ router.post("/add", addProduct);
 
 // get all products
 // @method - get
-// @route - /api/product/get
+// @route - /api/product/get 
 router.get("/get", getAllProducts); 
-
+ 
 // get product by Id
 // @method - get
 // @route - /api/product/:id
