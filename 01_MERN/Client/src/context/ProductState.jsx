@@ -26,7 +26,7 @@ const ProductState = (props) => {
   return (
     <ProductContext.Provider
       value={{
-        data: 10,
+        products,
       }}
     >
       {props.children}

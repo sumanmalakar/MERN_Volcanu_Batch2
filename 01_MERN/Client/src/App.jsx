@@ -1,9 +1,16 @@
 import React, { useContext } from "react";
 import ProductContext from "./context/ProductContext";
+import ProductSlider from "./components/ProductSlider";
+import Product from "./components/Product";
 
 const App = () => {
-  const { data } = useContext(ProductContext);
-  return <div>App {data} </div>;
+  // const { } = useContext(ProductContext);
+  return (
+    <>
+      <ProductSlider />
+      <Product />
+    </>
+  );
 };
 
 export default App;
