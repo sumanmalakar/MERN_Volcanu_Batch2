@@ -1,15 +1,22 @@
-import React, { useContext } from "react";
-import ProductContext from "./context/ProductContext";
-import ProductSlider from "./components/ProductSlider";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Product from "./components/Product";
+import Navbar from "./components/Navbar";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import AddProduct from "./pages/AddProduct";
 
 const App = () => {
-  // const { } = useContext(ProductContext);
   return (
-    <>
-      <ProductSlider />
-      <Product />
-    </>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Product />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/addproduct" element={<AddProduct />} />
+        
+      </Routes>
+    </BrowserRouter>
   );
 };
 

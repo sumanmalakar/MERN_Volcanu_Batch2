@@ -23,6 +23,26 @@ const ProductState = (props) => {
     fetchProduct();
   }, []);
 
+
+  // add Product
+  const addProduct = async (
+    title,
+    description,
+    price,
+    qty,
+    imgsrc,
+    category
+  ) => {
+    const api = await axios.post(`${url}/product/add`, {
+      title,
+      description,
+      price,
+      qty,
+      imgsrc,
+      category,
+    });
+  };
+
   return (
     <ProductContext.Provider
       value={{

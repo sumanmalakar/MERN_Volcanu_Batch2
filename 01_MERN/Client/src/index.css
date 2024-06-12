@@ -6,3 +6,7 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
+
+label{
+  font-weight: bold;
+}

@@ -18,12 +18,14 @@ function ProductSlider() {
     <div
       className="slider-container"
       style={{
-        backgroundColor: "#343a40",
+        position:'relative',
+        // backgroundColor: "#343a40",
         width: "97%",
         margin: "auto",
         marginTop: "1rem",
         height: "320px",
         padding: "20px",
+        zIndex:'-1'
       }}
     >
       <Slider {...settings}>
