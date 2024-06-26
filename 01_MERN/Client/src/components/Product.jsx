@@ -1,12 +1,15 @@
 import { useContext } from "react";
 import ProductContext from "../context/ProductContext";
 import ProductSlider from "./ProductSlider";
+import { Link } from "react-router-dom";
 
 const Product = () => {
   const { products } = useContext(ProductContext);
+ 
+
   return (
     <>
-    <ProductSlider />
+      <ProductSlider />
       <div className="container">
         <div className="row d-flex justify-content-center align-items-center text-center">
           {products.map((data) => (
@@ -15,7 +18,7 @@ const Product = () => {
               className="col-md-4 my-3 p-2"
               //   style={{border:"1px solid white"}}
             >
-              <div>
+              <Link to={`/product/${data._id}`}>
                 <img
                   src={data.imgsrc}
                   style={{
@@ -25,7 +28,7 @@ const Product = () => {
                     border: "2px solid yellow",
                   }}
                 />
-              </div>
+              </Link>
               <h3 className="mt-3">{data.title}</h3>
             </div>
           ))}
