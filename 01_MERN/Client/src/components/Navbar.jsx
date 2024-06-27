@@ -1,7 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
+import ProductContext from "../context/ProductContext";
 const Navbar = () => {
+  const { logout } = useContext(ProductContext);
+  const navigate = useNavigate();
+
   return (
     <>
       <div
@@ -13,11 +17,27 @@ const Navbar = () => {
       >
         <div className="left"></div>
         <div className="right">
-          <Link to={'/'} className="items btn btn-primary mx-3">Products</Link>
-          <Link to={'/addproduct'} className="items btn btn-warning mx-3">AddProduct</Link>
-          <Link to={'/login'} className="items btn btn-secondary mx-3">Login</Link>
-          <Link to={'/register'} className="items btn btn-info mx-3">Register</Link>
-          <div className="items btn btn-danger mx-3">Logout</div>
+          <Link to={"/"} className="items btn btn-primary mx-3">
+            Products
+          </Link>
+          <Link to={"/addproduct"} className="items btn btn-warning mx-3">
+            AddProduct
+          </Link>
+          <Link to={"/login"} className="items btn btn-secondary mx-3">
+            Login
+          </Link>
+          <Link to={"/register"} className="items btn btn-info mx-3">
+            Register
+          </Link>
+          <div
+            className="items btn btn-danger mx-3"
+            onClick={() => {
+              logout();
+              navigate("/");
+            }}
+          >
+            Logout
+          </div>
         </div>
       </div>
     </>

@@ -5,6 +5,7 @@ import "./index.css";
 import ProductState from "./context/ProductState.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
+ 
   <ProductState>
     <App />
   </ProductState>

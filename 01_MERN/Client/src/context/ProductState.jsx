@@ -5,6 +5,8 @@ import axios from "axios";
 const ProductState = (props) => {
   const [products, setProducts] = useState([]);
   const [reload, setReload] = useState(false);
+  const [token, setToken] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const url = "http://localhost:1000/api";
 
@@ -22,6 +24,18 @@ const ProductState = (props) => {
     };
     fetchProduct();
   }, [reload]);
+
+  useEffect(() => {
+    const tokenFromLocalStorage = localStorage.getItem("token")
+    // console.log(tokenFromLocalStorage)
+    if(tokenFromLocalStorage){
+      setToken(tokenFromLocalStorage)
+      setIsAuthenticated(true)
+    }
+    
+  }, [token])
+  
+  // console.log(isAuthenticated)
 
   // add Product
   const addProduct = async (
@@ -54,15 +68,56 @@ const ProductState = (props) => {
     // console.log(api)
   };
 
+  // register User
+  const register = async (name, email, password) => {
+    const api = await axios.post(
+      `${url}/user/register`,
+      { name, email, password },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    return api.data;
+  };
+
+  // login User
+  const login = async (email, password) => {
+    const api = await axios.post(
+      `${url}/user/login`,
+      { email, password },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    // console.log(api.data)
+    setToken(api.data.token);
+    localStorage.setItem("token", api.data.token);
+    setIsAuthenticated(true);
+    return api.data;
+  };
 
 
+  // logout 
+  const logout = () =>{
+    localStorage.removeItem("token");
+    setToken("")
+    setIsAuthenticated(false)
+  }
 
   return (
     <ProductContext.Provider
       value={{
         products,
         addProduct,
-        url
+        url,
+        register,
+        login,
+        logout,
       }}
     >
       {props.children}
