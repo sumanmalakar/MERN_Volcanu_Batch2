@@ -59,6 +59,7 @@ const ProductState = (props) => {
       {
         headers: {
           "Content-Type": "Application/json",
+          "Auth":token
         },
         withCredentials: true,
       }
@@ -118,6 +119,8 @@ const ProductState = (props) => {
         register,
         login,
         logout,
+        isAuthenticated,
+        setIsAuthenticated,
       }}
     >
       {props.children}

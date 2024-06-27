@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import ProductContext from "../context/ProductContext";
 const Navbar = () => {
-  const { logout } = useContext(ProductContext);
+  const { logout, isAuthenticated } = useContext(ProductContext);
   const navigate = useNavigate();
 
   return (
@@ -20,24 +20,34 @@ const Navbar = () => {
           <Link to={"/"} className="items btn btn-primary mx-3">
             Products
           </Link>
-          <Link to={"/addproduct"} className="items btn btn-warning mx-3">
-            AddProduct
-          </Link>
-          <Link to={"/login"} className="items btn btn-secondary mx-3">
-            Login
-          </Link>
-          <Link to={"/register"} className="items btn btn-info mx-3">
-            Register
-          </Link>
-          <div
-            className="items btn btn-danger mx-3"
-            onClick={() => {
-              logout();
-              navigate("/");
-            }}
-          >
-            Logout
-          </div>
+
+          {isAuthenticated && (
+            <>
+              <Link to={"/addproduct"} className="items btn btn-warning mx-3">
+                AddProduct
+              </Link>
+              <div
+                className="items btn btn-danger mx-3"
+                onClick={() => {
+                  logout();
+                  navigate("/");
+                }}
+              >
+                Logout
+              </div>
+            </>
+          )}
+
+          {!isAuthenticated && (
+            <>
+              <Link to={"/login"} className="items btn btn-secondary mx-3">
+                Login
+              </Link>
+              <Link to={"/register"} className="items btn btn-info mx-3">
+                Register
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </>
